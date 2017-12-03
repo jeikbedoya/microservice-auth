@@ -1,0 +1,51 @@
+spring:
+  profiles.active: development
+
+---
+spring:
+  profiles: development
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: validate
+datasource:
+  db-test:
+      url: jdbc:mysql://localhost/jeikode
+      username: root
+      password: admin
+---
+
+spring:
+  profiles: test
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+datasource:
+  db-test:
+      url: jdbc:mysql://localhost/test
+      username: root
+      password: admin
+      driver-class-name: com.mysql.jdbc.Driver
+      test-on-borrow: true
+      validation-query: SELECT 1 FROM 1
+
+---
+
+spring:
+  profiles: production
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+datasource:
+  db-test:
+      url: jdbc:mysql://localhost/test
+      username: root
+      password: admin
+      driver-class-name: com.mysql.jdbc.Driver
+      test-on-borrow: true
+      validation-query: SELECT 1 FROM 1
+
